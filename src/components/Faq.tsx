@@ -8,7 +8,7 @@ interface FaqItem {
 
 const GOOGLE_PRODUCTS = [
   {
-    name: "Gemini 2.5 Flash",
+    name: "Gemini 1.5 Flash",
     desc: "Parses your free-text lifestyle description into structured activities and writes your personalised coaching summary. Also powers the Ask Cairo conversational chat — your footprint is injected as context so Gemini can answer specific questions.",
   },
   {
@@ -33,7 +33,7 @@ const GOOGLE_PRODUCTS = [
   },
   {
     name: "Gemini Chat (Ask Cairo)",
-    desc: "A dedicated conversational interface that sends your entire footprint breakdown + top recommendations as context to Gemini 2.5 Flash. Ask any follow-up: \"What if I went vegan?\", \"Which single change matters most?\", or \"Explain my transport emissions.\"",
+    desc: "A dedicated conversational interface that sends your entire footprint breakdown + top recommendations as context to Gemini 1.5 Flash. Ask any follow-up: \"What if I went vegan?\", \"Which single change matters most?\", or \"Explain my transport emissions.\"",
   },
 ];
 
@@ -59,7 +59,7 @@ const FAQS: FaqItem[] = [
   },
   {
     q: "What is 'Ask Cairo' and how does it work?",
-    a: "Ask Cairo is a full conversational AI chat panel powered by Gemini 2.5 Flash. After analysing your lifestyle, the 'Ask Cairo' button appears in the topbar. Click it and ask anything — your exact footprint figures, category breakdown, and top 4 recommendations are injected as context into every message so Gemini gives personalised, data-grounded answers. It also works offline with smart fallback responses.",
+    a: "Ask Cairo is a full conversational AI chat panel powered by Gemini 1.5 Flash. After analysing your lifestyle, the 'Ask Cairo' button appears in the topbar. Click it and ask anything — your exact footprint figures, category breakdown, and top 4 recommendations are injected as context into every message so Gemini gives personalised, data-grounded answers. It also works offline with smart fallback responses.",
   },
   {
     q: "How accurate is my carbon score?",
