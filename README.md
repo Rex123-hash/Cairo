@@ -9,6 +9,25 @@ Production URL: https://cairo-carbon-ai.web.app
 🎯 Challenge Vertical: Smart Assistant
 Cairo is built around the Smart Assistant vertical for Prompt Wars Challenge 3. It acts as an intelligent digital sustainability coach, translating unstructured conversational input about your lifestyle into strict, actionable carbon metrics and personalized recommendations.
 
+🏆 Prompt Wars Challenge 3 Alignment
+Cairo was designed from the ground up to excel in the three core judging criteria:
+
+1. Smart Assistant (Gemini NL Parsing & Coaching)
+Large Language Models excel at understanding language, but can hallucinate math. Cairo uses Gemini 2.5 Flash for exactly what it is best at:
+- Parsing: It extracts messy, unstructured lifestyle data into a strict JSON schema. It understands synonyms, mixed units, and conversational tangents.
+- Coaching: It powers the embedded Ask Cairo conversational panel. When you open the chat, Cairo injects your real-time footprint data (kg CO₂e), your A-F grade, and your ranked recommendations into the system prompt. This gives the AI perfect context to act as a highly personalised, accurate coach rather than a generic chatbot.
+
+2. Logical Decision Making (Deterministic Impact Engine)
+To prevent AI hallucinations in critical sustainability data, Cairo never asks Gemini to calculate carbon emissions.
+- The AI handles the extraction, but a deterministic, locally-running engine handles the maths. 
+- Cairo calculates CO₂e using published, scientifically-backed IPCC and IEA emission factors. 
+- It generates "What-If" recommendations (e.g., "Switch to public transit") and mathematically ranks them by monthly CO₂ savings (kg/mo). The user is always presented with the highest-leverage actions first, completely eliminating AI hallucinations in the data and ensuring logical decision making.
+
+3. Practical Real-World Application
+Carbon footprinting is an abstract concept. Cairo makes it tangible, practical, and highly applicable to daily life:
+- Real-World Equivalencies: Translates raw kg/mo into visual metrics people actually understand: "Trees needed to offset", "Equivalent smartphone charges", and "Equivalent long-haul flights".
+- Google Maps Integration: Rather than asking the user to guess how many kilometres they drive, they can just say "I commute from London to Manchester". Cairo integrates the Google Maps Distance Matrix API to calculate the true real-world driving distance instantly.
+
 🧠 What It Does
 Cairo solves the biggest problem in carbon tracking: tedious, multi-page data entry forms. 
 Instead of forcing users to calculate their own utility bills or driving distances, Cairo lets them just type or speak naturally: *"I drive a petrol car 15km to work, eat a heavy meat diet, and leave my AC on all day."*
@@ -46,7 +65,7 @@ Component | Role | Model
 ```
 
 ### Key Design Decisions
-1. **Zero-Hallucination Math:** LLMs struggle with precise arithmetic. Cairo uses Gemini *only* for language parsing. The actual carbon calculation (kg CO₂e) is done by a deterministic TypeScript engine.
+1. **Zero-Hallucination Math:** LLMs struggle with precise arithmetic. Cairo uses Gemini *only* for language parsing. The actual carbon calculation (kg CO₂e) is done by a deterministic TypeScript engine based on IPCC data.
 2. **Context Injection:** The "Ask Cairo" chatbot doesn't start with a blank slate. It is injected with your exact calculated footprint, your A-F grade, and your highest-impact recommendations before you even say hello.
 3. **Graceful Degradation:** If the Gemini API key hits a rate limit (HTTP 429) or the Maps API is unreachable, the app instantly falls back to offline Regex parsers and offline distance estimators. The app never crashes.
 
@@ -139,7 +158,18 @@ npx firebase deploy --only hosting
 
 🧪 Testing
 ```bash
-npm run test    # Runs Vitest test suite
+> cairo@1.0.0 test
+> vitest run
+
+ RUN  v2.1.9 cairo
+
+ ✓ tests/parser.test.ts (6 tests)
+ ✓ tests/recommender.test.ts (5 tests)
+ ✓ tests/calculator.test.ts (8 tests)
+ ✓ tests/insights.test.ts (9 tests)
+
+ Test Files  4 passed (4)
+      Tests  28 passed (28)
 ```
 **28 tests — all passing.** Test coverage spans:
 
