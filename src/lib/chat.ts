@@ -9,7 +9,7 @@
 import type { Footprint, Recommendation } from "../engine/types";
 
 const API_KEY = import.meta.env.VITE_GEMINI_API_KEY as string | undefined;
-const MODEL = "gemini-1.5-flash";
+const MODEL = "gemini-2.5-flash";
 const ENDPOINT = (key: string) =>
   `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${key}`;
 
@@ -75,6 +75,9 @@ export async function sendChatMessage(
         generationConfig: { temperature: 0.6, maxOutputTokens: 400 },
       }),
     });
+    if (res.status === 429) {
+      return "⚠️ I've hit my daily Gemini API quota. Please try again later or add a new API key!";
+    }
     if (!res.ok) return null;
     const data = await res.json();
     const text: unknown = data?.candidates?.[0]?.content?.parts?.[0]?.text;

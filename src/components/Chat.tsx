@@ -109,7 +109,7 @@ export function Chat({ footprint, recommendations, onClose }: ChatProps) {
             <h2 className="faq-panel-title">Ask Cairo</h2>
             <p className="faq-panel-sub">
               {chatEnabled
-                ? "Powered by Gemini 1.5 Flash — ask anything about your footprint."
+                ? "Powered by Gemini 2.5 Flash — ask anything about your footprint."
                 : "Offline mode — add a Gemini key for personalised AI answers."}
             </p>
           </div>
@@ -184,7 +184,7 @@ export function Chat({ footprint, recommendations, onClose }: ChatProps) {
         {/* Footer */}
         <div className="faq-tech-strip">
           <span className="faq-tech-label">Powered by</span>
-          <span className="faq-tech-pill">Gemini 1.5 Flash</span>
+          <span className="faq-tech-pill">Gemini 2.5 Flash</span>
           <span className="chat-hint">Shift+Enter for new line · Esc to close</span>
         </div>
       </div>
