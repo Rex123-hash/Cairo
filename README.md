@@ -230,7 +230,5 @@ cairo/
 - **Offline Fallback:** We assume that if the user provides no API keys, they still want to use the app. The app instantly falls back to a Regex engine that can parse basic phrases like *"I drive 10km"* without ever hitting Google servers.
 
 ---
-<div align="center">
-  <b>Built for Prompt Wars Hackathon 3</b><br>
-  <i>Powered by Google Gemini & Firebase</i>
-</div>
+
+**Built for Prompt Wars Hackathon Challenge 3** · Powered by Google Gemini API & Firebase Hosting
